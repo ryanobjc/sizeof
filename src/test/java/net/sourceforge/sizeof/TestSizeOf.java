@@ -17,7 +17,6 @@ import static net.sourceforge.sizeof.SizeOf.*;
 public class TestSizeOf {
     private static final int EMPTY_ARRAY_SIZE = 24;
 
-    @Test
     public void testPrimitives() {
         assertEquals(16, sizeOf(new Object()));
         assertEquals(16, deepSizeOf(new Object()));
@@ -40,7 +39,7 @@ public class TestSizeOf {
         assertEquals(EMPTY_ARRAY_SIZE + 8 * 100 + 16 * 100, deepSizeOf(objects));
     }
 
-    @Test
+
     public void testCycle() {
         Recursive dummy = new Recursive();
         assertEquals(32, sizeOf(dummy));
@@ -49,7 +48,7 @@ public class TestSizeOf {
         assertEquals(32, deepSizeOf(dummy));
     }
 
-    @Test
+
     public void testInheritance() {
         assertEquals(24, sizeOf(new Parent()));
         assertEquals(24, deepSizeOf(new Parent()));
@@ -57,7 +56,7 @@ public class TestSizeOf {
         assertEquals(32, deepSizeOf(new Child()));
     }
 
-    @Test
+
     public void testCollections() {
         assertEquals(144, deepSizeOf(new ArrayList()));
         assertEquals(216, deepSizeOf(new HashMap()));
@@ -66,7 +65,7 @@ public class TestSizeOf {
         assertEquals(192, deepSizeOf(new ConcurrentSkipListMap()));
     }
 
-    @Test
+
     public void testFlyweights() {
         skipFlyweightObject(true);
         assertEquals(0, sizeOf(Thread.State.TERMINATED));
@@ -75,7 +74,7 @@ public class TestSizeOf {
         skipFlyweightObject(false);
     }
 
-    @Test
+
     public void testDeep() {
         Recursive root = new Recursive();
         Recursive recursive = root;
