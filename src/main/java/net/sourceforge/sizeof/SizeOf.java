@@ -25,9 +25,13 @@ public class SizeOf {
      */
     private static Instrumentation inst;
 
+    public static boolean hasInstrumentation() {
+	return inst != null;
+    }
+
     private static long MIN_CLASS_SIZE_TO_LOG = Long.MAX_VALUE;
     private static boolean SKIP_STATIC_FIELD = true;
-    private static boolean SKIP_FLYWEIGHT_FIELD = false;
+    private static boolean SKIP_FLYWEIGHT_FIELD = true;
     private static boolean debug = false;
 
     /**
